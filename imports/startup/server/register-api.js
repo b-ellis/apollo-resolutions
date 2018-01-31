@@ -4,30 +4,23 @@ import merge from 'lodash/merge';
 
 import ResolutionsSchema from '../../api/resolutions/resolutions.graphql';
 import ResolutionResolvers from '../../api/resolutions/resolvers';
+import UsersSchema from '../../api/users/User.graphql';
+import UsersResolvers from '../../api/users/resolvers';
+import GoalsSchema from '../../api/goals/goal.graphql';
+import GoalsResolvers from '../../api/goals/resolvers';
 
-const testSchema = `
-type Query {
-    hi: String
-    resolutions: [Resolution]
-}
-`
+// test comment
 
 const typeDefs = [
-    testSchema,
-    ResolutionsSchema
+	GoalsSchema,
+	ResolutionsSchema,
+	UsersSchema
 ];
 
-const resolver = {
-    Query: {
-        hi() {
-            return "Hello World";
-        },
-    }
-}
-
-const resolvers = merge(
-    resolver,
-    ResolutionResolvers
+const resolvers = merge( 
+	GoalsResolvers,
+	ResolutionResolvers,
+	UsersResolvers
 )
 
 const schema = makeExecutableSchema({

@@ -1,8 +1,14 @@
-#name 
-#createdAt 
-#[todo]
-
 type Resolution {
     _id: String!
     name: String!
+    goals: [Goal]
+}
+
+type Query {
+    hi: String
+	resolutions: [Resolution]
+}
+
+type Mutation {
+    createResolution(name: String!): Resolution
 }
